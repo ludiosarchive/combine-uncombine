@@ -1,0 +1,14 @@
+#!/usr/bin/python
+
+import sys
+
+for fname in sys.argv[1:]:
+	marker = '@@@@@@@@@@'
+	print "%s\t%s\t%s" % (marker, fname, marker)
+	with open(fname, "rb") as f:
+		content = f.read()
+		if marker in content:
+			raise RuntimeError("%r contains %r" % (fname, marker))
+		if not content.endswith("\n"):
+			raise RuntimeError("%r is missing a trailing newline" % (fname,))
+		sys.stdout.write(content)
