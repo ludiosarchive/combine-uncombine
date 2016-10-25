@@ -2,19 +2,19 @@
 
 import sys
 
-current_fname = None
+fname = None
 content = ""
 for line in sys.stdin:
 	line = line.rstrip("\n")
 	marker = '@@@@@@@@@@'
 	if line.startswith("%s\t" % marker) and line.endswith("\t%s" % marker):
-		_1, fname, _2 = line.split("\t", 2)
+		_1, new_fname, _2 = line.split("\t", 2)
 		assert _1 == marker
 		assert _2 == marker
-		if current_fname is not None:
-			with open(current_fname, "wb") as f:
+		if fname is not None:
+			with open(fname, "wb") as f:
 				f.write(content)
-		current_fname = fname
+		fname = new_fname
 		content = ""
 	else:
 		content += line
