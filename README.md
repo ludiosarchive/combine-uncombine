@@ -5,7 +5,7 @@ This is useful for batch edit operations in a text editor.
 
 `uncombine-files` takes the combined file and writes out the individual files.
 
-```
+```bash
 combine-files one two > combined
 # (edit combined)
 uncombine-files < combined
