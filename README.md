@@ -1,7 +1,9 @@
 # combine-uncombine
 
-For combining files into one big file, for batch edit operations in a text editor.
-Can be uncombined after editing.
+`combine-files` combines files into one big file (with filename headers).
+This is useful for batch edit operations in a text editor.
+
+`uncombine-files` takes the combined file and writes out the individual files.
 
 ```
 combine-files one two > combined
